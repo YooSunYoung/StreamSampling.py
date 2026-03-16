@@ -60,7 +60,7 @@ autodoc_type_aliases = {
 
 intersphinx_mapping = {
     'python': ('https://docs.python.org/3', None),
-    'numpy': ('https://numpy.org/doc/stable/', None)
+    'numpy': ('https://numpy.org/doc/stable/', None),
 }
 
 # autodocs includes everything, even irrelevant API internals. autosummary
@@ -147,19 +147,19 @@ html_theme_options = {
     "icon_links": [
         {
             "name": "GitHub",
-            "url": "https://github.com/yoosunyoung/streamsampling",
+            "url": "https://github.com/yoosunyoung/StreamSampling.py",
             "icon": "fa-brands fa-github",
             "type": "fontawesome",
         },
         {
             "name": "PyPI",
-            "url": "https://pypi.org/project/streamsampling/",
+            "url": "https://pypi.org/project/StreamSampling.py/",
             "icon": "fa-brands fa-python",
             "type": "fontawesome",
         },
         {
             "name": "Conda",
-            "url": "https://anaconda.org/conda-forge/streamsampling",
+            "url": "https://anaconda.org/conda-forge/StreamSampling.py",
             "icon": "fa-custom fa-anaconda",
             "type": "fontawesome",
         },
@@ -192,8 +192,7 @@ htmlhelp_basename = 'streamsamplingdoc'
 
 # -- Options for Matplotlib in notebooks ----------------------------------
 
-nbsphinx_execute_arguments = [
-]
+nbsphinx_execute_arguments = []
 
 # -- Options for doctest --------------------------------------------------
 

@@ -39,9 +39,9 @@ test = [
 ]
 
 [project.urls]
-"Bug Tracker" = "https://github.com/yoosunyoung/streamsampling/issues"
-"Documentation" = "https://yoosunyoung.github.io/streamsampling"
-"Source" = "https://github.com/yoosunyoung/streamsampling"
+"Bug Tracker" = "https://github.com/yoosunyoung/StreamSampling.py/issues"
+"Documentation" = "https://yoosunyoung.github.io/StreamSampling.py"
+"Source" = "https://github.com/yoosunyoung/StreamSampling.py"
 
 [tool.setuptools_scm]
 
@@ -91,6 +91,9 @@ pydocstyle.convention = "numpy"
     "I",  # we don't collect imports at the top
     "S101",  # asserts are used for demonstration and are safe in notebooks
     "T201",  # printing is ok for demonstration purposes
+]
+"docs/conf.py" = [
+    "F401",
 ]
 
 [tool.ruff.format]

@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 60e151e
+_commit: 371be75
 _src_path: gh:petitesw/copier_pixi_template
 community_contact_email: 'TODO: Fill Community Contact Email.'
 description: Weighted Reservoir Sampling with Replacement SKIP algorithm.
@@ -10,4 +10,5 @@ nightly_deps: JuliaDynamics/StreamSampling.jl
 orgname: yoosunyoung
 prettyname: StreamSampling
 projectname: streamsampling
+reponame: StreamSampling.py
 year: 2026
