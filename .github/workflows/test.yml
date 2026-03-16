@@ -1,0 +1,65 @@
+name: Test
+
+
+on:
+  workflow_dispatch:
+    inputs:
+      os-variant:
+        default: 'ubuntu-24.04'
+        type: string
+      python-version:
+        type: string
+      coverage-report:
+        default: false
+        type: boolean
+      checkout_ref:
+        default: ''
+        type: string
+      unpinned:
+        default: false
+        type: boolean
+  workflow_call:
+    inputs:
+      os-variant:
+        default: 'ubuntu-24.04'
+        type: string
+      python-version:
+        type: string
+      coverage-report:
+        default: false
+        type: boolean
+      checkout_ref:
+        default: ''
+        type: string
+      unpinned:
+        default: false
+        type: boolean
+
+  # Nightly Test Schedules
+  schedule:
+    - cron: '30 1 * * 1-5'
+      with:
+        pixi_frozen: true  # At main
+    - cron: '30 2 * * 1-5'
+      with:
+        pixi_frozen: false  # At release
+
+jobs:
+  test:
+    runs-on: ${{ inputs.os-variant }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: prefix-dev/setup-pixi@v0.9.4
+        with:
+          pixi-version: v0.65.0
+          frozen: ${{ !inputs.unpinned }}
+          cache: true
+      - run: pixi run test
+        if:  ${{ !inputs.unpinned }}
+      - run: pixi run -e unpinned test
+        if: ${{ inputs.unpinned }}
+      - uses: actions/upload-artifact@v6
+        if: ${{ inputs.coverage-report }}
+        with:
+          name: CoverageReport
+          path: coverage_html/

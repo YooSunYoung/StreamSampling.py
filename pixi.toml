@@ -1,0 +1,52 @@
+[workspace]
+name = "streamsampling"
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-64", "osx-arm64", "win-64"]
+
+[dependencies]
+python = "3.11.*"
+
+[pypi-dependencies]
+streamsampling = { path = "./", editable = true }
+
+# ==================== Tasks ====================
+
+[tasks]
+test = { cmd = "pytest tests/", default-environment = "test" }
+
+docs = { cmd = "python -m sphinx -v -b html -d /tmp/docs_doctrees docs html", default-environment = "docs" }
+
+lint = { cmd = "pre-commit run --all-files", default-environment = "lint" }
+
+# ==================== Test feature ====================
+
+[feature.test.pypi-dependencies]
+streamsampling = { path = "./", editable = true, extras = ["test"] }
+
+# ==================== Lint feature ====================
+
+[feature.lint.pypi-dependencies]
+pre-commit = "*"
+ruff = ">=0.15"
+
+[feature.lint.tasks]
+lint = "pre-commit run --all-files"
+check = "ruff check ."
+format = "ruff format ."
+
+# ==================== Docs feature ====================
+
+[feature.docs.dependencies]
+pandoc = "*"
+python-graphviz = "*"
+
+[feature.docs.pypi-dependencies]
+streamsampling = { path = "./", editable = true, extras = ["test", "docs"] }
+
+# ==================== Environments ====================
+
+[environments]
+# Per-package test environments (include workspace dep features)
+test = { features = ["test"], solve-group = "default" }
+docs = { features = ["docs"], solve-group = "default" }
+lint = { features = ["lint"], solve-group = "default" }

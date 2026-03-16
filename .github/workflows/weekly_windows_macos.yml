@@ -1,0 +1,16 @@
+name: Windows and MacOS weekly tests
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * 1'
+
+jobs:
+  tests:
+    name: Tests
+    strategy:
+      matrix:
+        os: ['macos-latest', 'windows-latest']
+    uses: ./.github/workflows/test.yml
+    with:
+      os-variant: ${{ matrix.os }}

@@ -1,6 +1,19 @@
-# Weighted Reservoir Sampling with Replacement (Python/NumPy Implementation)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
+[![PyPI badge](http://img.shields.io/pypi/v/streamsampling.svg)](https://pypi.python.org/pypi/streamsampling)
+[![Anaconda-Server Badge](https://anaconda.org/conda-forge/streamsampling/badges/version.svg)](https://anaconda.org/conda-forge/streamsampling)
+[![License: BSD 3-Clause](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](LICENSE)
 
-This repository contains a Python/NumPy implementation of the **Weighted Reservoir Sampling with Replacement SKIP** algorithm, converted from the Julia implementation in [StreamSampling.jl](https://github.com/JuliaDynamics/StreamSampling.jl).
+# StreamSampling
+
+## About
+
+Weighted Reservoir Sampling with Replacement (Python/NumPy Implementation) and julia API wrapper for [StreamSampling.jl](https://github.com/JuliaDynamics/StreamSampling.jl)
+
+## Installation
+
+```sh
+python -m pip install streamsampling
+```
 
 ## Algorithm Overview
 
