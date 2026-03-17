@@ -6034,8 +6034,8 @@ packages:
   - cython ; extra == 'tests'
 - pypi: ./
   name: streamsampling
-  version: 0.1.dev8+g44f9b2bfd.d20260316
-  sha256: fa34c82655008f10aec6331378d7a13dcae39fe8db658d5bb5b394fba6b424e7
+  version: 0.1.dev10+ge8c6c0338
+  sha256: 432dcbc7487d7e7c4cde341deb5fad1139993af791fdab6713bf3fbc2bc8c0a8
   requires_dist:
   - numpy>=2
   - scipy>=1.14
