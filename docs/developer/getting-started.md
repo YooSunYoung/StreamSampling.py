@@ -38,11 +38,11 @@ Alternatively, if you want a different workflow, take a look at ``.pre-commit.ya
 ## Running tests
 
 `````{tab-set}
-````{tab-item} pixi test
+````{tab-item} pixi run test
 Run the tests using
 
 ```sh
-pixi test
+pixi run test
 ```
 
 ````

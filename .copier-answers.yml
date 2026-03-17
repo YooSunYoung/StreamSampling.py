@@ -1,9 +1,9 @@
 # Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
-_commit: 371be75
+_commit: 3f0216c
 _src_path: gh:petitesw/copier_pixi_template
 community_contact_email: 'TODO: Fill Community Contact Email.'
 description: Weighted Reservoir Sampling with Replacement SKIP algorithm.
-max_python: '3.13'
+max_python: '3.14'
 min_python: '3.11'
 namespace_package: ''
 nightly_deps: JuliaDynamics/StreamSampling.jl
