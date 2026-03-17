@@ -79,7 +79,7 @@ filterwarnings = [
 ]
 
 [tool.ruff]
-line-length = 88
+line-length = 128
 extend-include = ["*.ipynb"]
 extend-exclude = [
     ".*", "__pycache__", "build", "dist", "install",
@@ -113,6 +113,9 @@ pydocstyle.convention = "numpy"
 ]
 "docs/conf.py" = [
     "F401",
+]
+"scripts/*" = [
+    "S101",
 ]
 
 [tool.ruff.format]
