@@ -3,13 +3,11 @@ Basic functionality tests and statistical validation of
 the weighted reservoir sampling multi-element algorithms.
 """
 
-import logging
 from collections import Counter
 
 import numpy as np
 import pytest
 
-import streamsampling as sp
 from streamsampling.weighted_sampling_multi_python import (
     SamplingMethod,
     stream_weighted_sample_multi,
@@ -20,12 +18,8 @@ from streamsampling.weighted_sampling_multi_python import (
 @pytest.mark.parametrize(
     'method',
     [
-        pytest.param(
-            SamplingMethod.A_RES, marks=pytest.mark.skip(reason="Not Implemented Yet")
-        ),
-        pytest.param(
-            SamplingMethod.A_EXPJ, marks=pytest.mark.skip(reason="Not Implemented Yet")
-        ),
+        pytest.param(SamplingMethod.A_RES, marks=pytest.mark.skip(reason="Not Implemented Yet")),
+        pytest.param(SamplingMethod.A_EXPJ, marks=pytest.mark.skip(reason="Not Implemented Yet")),
         SamplingMethod.WRSWR_SKIP,
     ],
 )
@@ -42,24 +36,18 @@ def test_basic_functionality(method):
 
     # Test streaming
     sampler = stream_weighted_sample_multi(n_sample, method)
-    for elem, weight in zip(elements, weights):
+    for elem, weight in zip(elements, weights, strict=True):
         sampler.fit(elem, weight)
 
     stream_sample = sampler.value()
-    assert len(stream_sample) == n_sample, (
-        f"{method} streaming failed: wrong sample size"
-    )
+    assert len(stream_sample) == n_sample, f"{method} streaming failed: wrong sample size"
 
 
 @pytest.mark.parametrize(
     'method',
     [
-        pytest.param(
-            SamplingMethod.A_RES, marks=pytest.mark.skip(reason="Not Implemented Yet")
-        ),
-        pytest.param(
-            SamplingMethod.A_EXPJ, marks=pytest.mark.skip(reason="Not Implemented Yet")
-        ),
+        pytest.param(SamplingMethod.A_RES, marks=pytest.mark.skip(reason="Not Implemented Yet")),
+        pytest.param(SamplingMethod.A_EXPJ, marks=pytest.mark.skip(reason="Not Implemented Yet")),
         SamplingMethod.WRSWR_SKIP,
     ],
 )
@@ -127,9 +115,7 @@ def test_edge_cases():
         ordered=True,
         rng=np.random.default_rng(42),
     )
-    sampler = stream_weighted_sample_multi(
-        3, SamplingMethod.A_RES, ordered=True, rng=np.random.default_rng(42)
-    )
+    sampler = stream_weighted_sample_multi(3, SamplingMethod.A_RES, ordered=True, rng=np.random.default_rng(42))
     for elem in elements:
         sampler.fit(elem, 1.0)
 
@@ -141,9 +127,7 @@ def test_edge_cases():
 
     # Test error conditions
     with pytest.raises(ValueError, match="Value"):
-        weighted_sample_multi(
-            [1, 2], [1.0], 1, SamplingMethod.A_RES
-        )  # Mismatched lengths
+        weighted_sample_multi([1, 2], [1.0], 1, SamplingMethod.A_RES)  # Mismatched lengths
 
     sampler = stream_weighted_sample_multi(3, SamplingMethod.A_RES)
     with pytest.raises(ValueError, match="Value"):
@@ -153,12 +137,8 @@ def test_edge_cases():
 @pytest.mark.parametrize(
     'method',
     [
-        pytest.param(
-            SamplingMethod.A_RES, marks=pytest.mark.skip(reason="Not Implemented Yet")
-        ),
-        pytest.param(
-            SamplingMethod.A_EXPJ, marks=pytest.mark.skip(reason="Not Implemented Yet")
-        ),
+        pytest.param(SamplingMethod.A_RES, marks=pytest.mark.skip(reason="Not Implemented Yet")),
+        pytest.param(SamplingMethod.A_EXPJ, marks=pytest.mark.skip(reason="Not Implemented Yet")),
         SamplingMethod.WRSWR_SKIP,
     ],
 )
@@ -177,9 +157,7 @@ def test_performance(method):
     sample = weighted_sample_multi(elements, weights, n_sample, method)
     end_time = time.time()
 
-    assert len(sample) == n_sample, (
-        f"{method} performance test failed: wrong sample size"
-    )
+    assert len(sample) == n_sample, f"{method} performance test failed: wrong sample size"
     duration = end_time - start_time
     assert duration < 0.1
     # print(f"Duration: {duration}")
